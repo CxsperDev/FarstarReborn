@@ -1,0 +1,6 @@
+#!/bin/bash
+
+IP1=`dig txt o-o.myaddr.test.l.google.com @ns1.google.com +short | tr -d '"'`
+sudo mysql --password=swg wordpress -e "UPDATE wp_options SET option_value='http://$IP1' WHERE option_name='siteurl'"
+sudo mysql --password=swg wordpress -e "UPDATE wp_options SET option_value='http://$IP1' WHERE option_name='home'"
+
